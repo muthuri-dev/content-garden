@@ -1,3 +1,4 @@
+import Forms from "@/components/Forms";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -27,14 +28,21 @@ export default async function MovieId({ params }: TParams) {
       </div>
       <h1 className="text-2xl font-bold text-center">{data.title}</h1>
       <div className="flex gap-10 mt-10">
-        <div className="w-1/2 font-medium bg-gray-100">
+        <div className="w-1/2 font-medium">
           <h1>
             <span className="underline">Homepage:</span>
-            <Link href={data.homepage} target="_blank">Link</Link>
+            <Link href={data.homepage} target="_blank">
+              Link
+            </Link>
           </h1>
-          <span>Original Language</span>
+          <h1>
+            <span className="underline">Original Language :</span>
+            {data.original_language}
+          </h1>
+          <p><span className="underline">Overview :</span>{data.overview}</p>
+          <p><span className="underine">Release Date :</span>{data.release_date}</p>
         </div>
-        <div className="w-1/2 font-medium bg-gray-100"></div>
+        <div className="w-1/2 font-medium bg-gray-100"><Forms params={params}/></div>
       </div>
     </div>
   );
