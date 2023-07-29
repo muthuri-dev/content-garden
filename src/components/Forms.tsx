@@ -1,7 +1,10 @@
 export const dynamic = "force-dynamic";
+
+
 import { db } from "@/app/db";
 import { revalidatePath } from "next/cache";
 import React from "react";
+import SubmitButton from "./SubmitBtn";
 
 async function getData(movieId: string) {
   const data = await db.comment.findMany({
@@ -35,12 +38,7 @@ export default async function Forms({ params }: TParams) {
             placeholder="add your comment ..."
           ></textarea>
           <input type="hidden" name="id" value={params.movieId} />
-          <button
-            type="submit"
-            className="bg-teal-500 px-4 py-2 rounded-lg text-white"
-          >
-            Add Comment
-          </button>
+          <SubmitButton/>
         </form>
         <div className="mt-5 flex flex-col gap-y-3">
             {data.map(post=>(
